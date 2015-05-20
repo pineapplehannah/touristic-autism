@@ -39,7 +39,13 @@
     <strong><%= comment.user_id %></strong>
     <br/>
     <p><%= comment.body %></p>
-    <p><%= link_to 'Delete', comment_path(comment), method: :delete, data: { confirm: 'Are you sure?' } %></p>
+    <% if user_signed_in? %>
+      <% if current_user.id == comment.user_id %>
+
+        <p><%= link_to 'Delete', comment_path(comment), method: :delete, data: { confirm: 'Are you sure?' } %></p>
+
+      <% end %>
+    <% end %>
   </div>
 <% end %>
 <%= render 'comments/form' %>
