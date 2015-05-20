@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root :to => redirect('/places')
   resources :comments
 
   resources :places
